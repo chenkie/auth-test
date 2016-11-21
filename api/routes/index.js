@@ -1,14 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var jwt = require('express-jwt');
-var cors = require('cors');
 
 var authCheck = jwt({
     secret: new Buffer('ryTBCu5qOXR4lVBvTA3f34B5uiVMN03FTnGQjiYEcspNhGh-CGcYTz4de8yoC9Kw', 'base64'),
     audience: 'HvnsjcXfZl6zll205KFOKYIjImJXC4vl'
 });
 
-app.use(cors());
 
 router
     .route('/public')
