@@ -10,12 +10,15 @@ angular.module('slmfreeman', ['auth0', 'angular-storage', 'angular-jwt', 'ngMate
             });
 
             jwtOptionsProvider.config({
-                whiteListedDomains: ['http://localhost:4000/']
+                tokenGetter: function(store) {
+                    return store.get('id_token');
+                },
+                whiteListedDomains: ['localhost']
             });
-
-            jwtInterceptorProvider.tokenGetter = function(store){
-                return store.get('id_token');
-            };
+            //
+            // jwtInterceptorProvider.tokenGetter = function(store){
+            //     return store.get('id_token');
+            // };
 
             $urlRouterProvider.otherwise('/home');
 
